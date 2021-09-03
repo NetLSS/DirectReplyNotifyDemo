@@ -2,11 +2,13 @@ package com.lilcode.example.directreplynotifydemo
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.RemoteInput
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.RequiresApi
 import com.lilcode.example.directreplynotifydemo.databinding.ActivityMainBinding
 
@@ -17,6 +19,9 @@ class MainActivity : AppCompatActivity() {
 
     private var notificationManager: NotificationManager? = null
     private val channelID = "com.lilcode.example.directreplynotifydemo.news"
+
+    private val notificationId = 101
+    private val KEY_TEXT_REPLY = "key_text_reply"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,13 @@ class MainActivity : AppCompatActivity() {
                 notificationManager?.createNotificationChannel(this)
             }
         }
+    }
 
+    fun sendNotification(view: View) {
+        val replyLabel = "Enter your reply hehe"
+        // key 와 label 로 RemoteInput 객체 생성
+        val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY)
+            .setLabel(replyLabel)
+            .build()
     }
 }
