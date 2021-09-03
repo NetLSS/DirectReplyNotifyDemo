@@ -34,6 +34,18 @@ class MainActivity : AppCompatActivity() {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager
 
         createNotificationChannel(channelID, "DirectReply News", "Example News Channel")
+
+        handleIntent()
+    }
+
+    private fun handleIntent() {
+        val intent = this.intent
+        val remoteInput = RemoteInput.getResultsFromIntent(intent)
+        remoteInput?.let {
+            val inputString = remoteInput.getCharSequence(KEY_TEXT_REPLY).toString()
+            binding.textView.text = inputString
+        }
+
     }
 
     private fun createNotificationChannel(id: String, name: String, description: String) {
