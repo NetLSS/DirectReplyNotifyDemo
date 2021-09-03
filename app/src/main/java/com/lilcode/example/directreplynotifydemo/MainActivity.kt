@@ -2,8 +2,10 @@ package com.lilcode.example.directreplynotifydemo
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.RemoteInput
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -53,5 +55,9 @@ class MainActivity : AppCompatActivity() {
         val remoteInput = RemoteInput.Builder(KEY_TEXT_REPLY)
             .setLabel(replyLabel)
             .build()
+
+        val resultIntent = Intent(this, MainActivity::class.java)
+
+        val resultPendingIntent = PendingIntent.getActivity(this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 }
