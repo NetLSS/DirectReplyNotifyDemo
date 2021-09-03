@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DirectReplyNotifyDemo</string>
+    <string name="notify">Notify</string>
 </resources>
