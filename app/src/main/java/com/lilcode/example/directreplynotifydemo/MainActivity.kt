@@ -44,6 +44,14 @@ class MainActivity : AppCompatActivity() {
         remoteInput?.let {
             val inputString = remoteInput.getCharSequence(KEY_TEXT_REPLY).toString()
             binding.textView.text = inputString
+
+            // 처리 완료된 경우 응답 완료로 알림 변경
+            val repliedNotification = NotificationCompat.Builder(this, channelID)
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentText("Reply received")
+                .build()
+
+            notificationManager?.notify(notificationId, repliedNotification)
         }
 
     }
